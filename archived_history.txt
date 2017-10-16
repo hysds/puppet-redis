@@ -1,0 +1,47 @@
+commit 72c27b745efd4ce201a648f3df8c28b80acfb227
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jun 20 15:04:34 2017 +0000
+
+    use redis from yum
+
+commit b7fd66832e842a5b39ec766ab90f6a05c0ada3c5
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jul 19 21:51:27 2016 +0000
+
+    fixed
+
+commit dc7ccd67e0f2a853cc8fda675fe9fc1d1b80beeb
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jul 19 21:26:50 2016 +0000
+
+    fix deps
+
+commit 0576a651fc1965a8b5c1477d0a8766a1d0c61445
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jul 19 21:23:33 2016 +0000
+
+    fix user/group
+
+commit 9496e79794ad5e7560db7ce31777187f4560a4a8
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jul 19 21:20:45 2016 +0000
+
+    install tuned; create /data/redis
+
+commit 6e9be2e19914666ef2edc48ed9f39f0e4b0b32d5
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jul 19 21:14:07 2016 +0000
+
+    create dirs and set deps
+
+commit b0be055f9d082c046167317d44c08f35ab0a5bb9
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jul 19 20:52:36 2016 +0000
+
+    add redis configuration
+
+commit a7e4e56887bca93f250007f3f456e61ed340c863
+Author: gmanipon <gmanipon@jpl.nasa.gov>
+Date:   Tue Jul 19 20:37:02 2016 +0000
+
+    initial import
