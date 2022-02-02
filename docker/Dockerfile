@@ -10,6 +10,9 @@ LABEL description="Redis image for HySDS"
 
 ENV GIT_URL https://github.com/${ORG}/puppet-redis/raw/${BRANCH}/install.sh
 
+# get release to install
+ARG HYSDS_RELEASE=develop
+
 # provision
 user root
 RUN set -ex \

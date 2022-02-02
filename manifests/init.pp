@@ -33,14 +33,14 @@ class redis {
 
   file { "/etc/tuned":
     ensure  => directory,
-    mode    => 0755,
+    mode    => "0755",
     require => Package["tuned"],
   }
 
 
   file { "/etc/tuned/no-thp":
     ensure  => directory,
-    mode    => 0755,
+    mode    => "0755",
     require => File["/etc/tuned"],
   }
 
@@ -48,7 +48,7 @@ class redis {
   file { "/etc/tuned/no-thp/tuned.conf":
     ensure  => present,
     content => template('redis/tuned.conf'),
-    mode    => 0644,
+    mode    => "0644",
     require => File["/etc/tuned/no-thp"],
   }
 
@@ -75,7 +75,7 @@ class redis {
   file { "/usr/local/etc/redis.conf":
     ensure  => present,
     content => template('redis/redis.conf'),
-    mode    => 0644,
+    mode    => "0644",
     require => Package["redis"],
   }
 
@@ -88,7 +88,7 @@ class redis {
     ensure  => directory,
     owner   => $user,
     group   => $group,
-    mode    => 0775,
+    mode    => "0755",
     require => Package["redis"],
   }
 
@@ -97,7 +97,7 @@ class redis {
     ensure  => directory,
     owner   => $user,
     group   => $group,
-    mode    => 0755,
+    mode    => "0755",
     require => File["/data"],
   }
 

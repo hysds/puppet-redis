@@ -1,6 +1,18 @@
 #!/bin/bash
+set -e
 
-mods_dir=/etc/puppet/modules
+if [ "$#" -ne 2 ]; then
+  echo "Usage: $0 <github org> <branch>"
+  echo "e.g.: $0 hysds master"
+  echo "e.g.: $0 hysds python2"
+  echo "e.g.: $0 pymonger python3"
+  exit 1
+fi
+ORG=$1
+BRANCH=$2
+
+mods_dir=/etc/puppetlabs/code/modules
+mkdir -p $mods_dir
 cd $mods_dir
 
 ##########################################
@@ -20,18 +32,13 @@ fi
 
 git_cmd=`which git`
 if [ $? -ne 0 ]; then
-  echo "Subversion must be installed. Run 'yum install git'."
+  echo "Subversion must be installed. Run 'dnf install git'."
   exit 1
 fi
 
 puppet_cmd=`which puppet`
 if [ $? -ne 0 ]; then
-  echo "Puppet must be installed. Run 'yum install puppet'."
-  exit 1
-fi
-
-if [ ! -d "/usr/share/puppet/modules/firewalld" ]; then
-  echo "puppet-firewalld must be installed. Run 'yum install puppet-firewalld'."
+  echo "Puppet must be installed. Run 'dnf install puppet'."
   exit 1
 fi
 
@@ -56,10 +63,22 @@ fi
 
 
 ##########################################
+# install puppetlab's firewall module
+##########################################
+
+mod_dir=$mods_dir/firewall
+
+# check that module is here; if not, export it
+if [ ! -d $mod_dir ]; then
+  $puppet_cmd module install puppetlabs-firewall
+fi
+
+
+##########################################
 # export redis puppet module
 ##########################################
 
-git_loc="${git_url}/hysds/puppet-redis"
+git_loc="${git_url}/${ORG}/puppet-redis"
 mod_dir=$mods_dir/redis
 site_pp=$mod_dir/site.pp
 
