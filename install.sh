@@ -92,4 +92,10 @@ fi
 # apply
 ##########################################
 
-FACTER_git_oauth_token=$GIT_OAUTH_TOKEN $puppet_cmd apply $site_pp
+PUPPET_EXIT_CODE=0
+$puppet_cmd apply --detailed-exitcodes $site_pp || PUPPET_EXIT_CODE=$?
+if [[ ("$PUPPET_EXIT_CODE" -ne 0 ) && ("$PUPPET_EXIT_CODE" -ne 2) ]]; then
+  echo "Puppet failed to run cleanly."
+  exit 1
+fi
+exit 0
