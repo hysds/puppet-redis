@@ -20,12 +20,11 @@ RUN set -ex \
  && rm -rf /etc/puppetlabs/code/modules/* /mnt/swapfile \
  && dnf clean all \
  && rm -f /tmp/install.sh \
- && rm -rf /var/cache dnf
+ && rm -rf /var/cache/dnf
 
 VOLUME /data/redis
 WORKDIR /data/redis
 
-COPY configs/redis-docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 6379

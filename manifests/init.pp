@@ -80,6 +80,14 @@ class redis {
   }
 
   
+  file { "/usr/local/bin/docker-entrypoint.sh":
+    ensure  => present,
+    content => template('redis/redis-docker-entrypoint.sh'),
+    mode    => "0755",
+    require => Package["redis"],
+  }
+
+  
   #####################################################
   # create data area
   #####################################################
